@@ -1,55 +1,23 @@
-# Eliza NASA Plugin and Tutorial
+# Ethcdm-AlcancIA 🤖
 
-This is the codebase and tutorial for building a NASA Eliza plugin.
+An artificial intelligence agent that simplifies access to decentralized savings. 
+Users can create invisible Web3 wallets, set personalized savings goals, 
+and form savings groups with friends.
 
-Plugin code is located at `plugins/nasa-plugin`.
 
-------------------------
+## 🎯 
 
-# Eliza 🤖
+- 🤖 characters/ # Personajes configurables (JSON)
+- ⚙️ src/ # Código fuente principal
+- 🔨 scripts/ # Scripts de automatización y despliegue
+- 📄 .env.example # Variables de entorno de ejemplo
 
-<div align="center">
-  <img src="./docs/static/img/eliza_banner.jpg" alt="Eliza Banner" width="100%" />
-</div>
 
-<div align="center">
 
-📖 [Documentation](https://elizaos.github.io/eliza/) | 🎯 [Examples](https://github.com/thejoven/awesome-eliza)
-
-</div>
-
-## 🌍 README Translations
-
-[中文说明](./README_CN.md) | [日本語の説明](./README_JA.md) | [한국어 설명](./README_KOR.md) | [Persian](./README_FA.md) | [Français](./README_FR.md) | [Português](./README_PTBR.md) | [Türkçe](./README_TR.md) | [Русский](./README_RU.md) | [Español](./README_ES.md) | [Italiano](./README_IT.md) | [ไทย](./README_TH.md) | [Deutsch](./README_DE.md) | [Tiếng Việt](./README_VI.md) | [עִברִית](https://github.com/elizaos/Elisa/blob/main/README_HE.md) | [Tagalog](./README_TG.md) | [Polski](./README_PL.md) | [Arabic](./README_AR.md) | [Hungarian](./README_HU.md) | [Srpski](./README_RS.md) | [Română](./README_RO.md) | [Nederlands](./README_NL.md)
-
-## 🚩 Overview
-
-<div align="center">
-  <img src="./docs/static/img/eliza_diagram.png" alt="Eliza Diagram" width="100%" />
-</div>
-
-## ✨ Features
-
-- 🛠️ Full-featured Discord, Twitter and Telegram connectors
-- 🔗 Support for every model (Llama, Grok, OpenAI, Anthropic, etc.)
-- 👥 Multi-agent and room support
-- 📚 Easily ingest and interact with your documents
-- 💾 Retrievable memory and document store
-- 🚀 Highly extensible - create your own actions and clients
-- ☁️ Supports many models (local Llama, OpenAI, Anthropic, Groq, etc.)
-- 📦 Just works!
-
-## Video Tutorials
-
-[AI Agent Dev School](https://www.youtube.com/watch?v=ArptLpQiKfI&list=PLx5pnFXdPTRzWla0RaOxALTSTnVq53fKL)
-
-## 🎯 Use Cases
-
-- 🤖 Chatbots
-- 🕵️ Autonomous Agents
-- 📈 Business Process Handling
-- 🎮 Video Game NPCs
-- 🧠 Trading
+- characters/ # Personajes configurables (JSON)
+src/ # Código fuente principal
+scripts/ # Scripts de automatización y despliegue
+.env.example # Variables de entorno de ejemplo
 
 ## 🚀 Quick Start
 
@@ -61,58 +29,22 @@ Plugin code is located at `plugins/nasa-plugin`.
 
 > **Note for Windows Users:** [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install-manual) is required.
 
-### Use the Starter (Recommended)
+### Use the Starter
 
-```bash
-git clone https://github.com/elizaos/eliza-starter.git
-cd eliza-starter
+
+git clone https://github.com/robz323/ethcdm-alcancIA.git
+cd ethcdm-alcancIA
 cp .env.example .env
-pnpm i && pnpm build && pnpm start
-```
+pnpm install   
+pnpm build   
+pnpm start
+
 
 Once the agent is running, you should see the message to run "pnpm start:client" at the end.
 Open another terminal and move to same directory and then run below command and follow the URL to chat to your agent.
 
-```bash
-pnpm start:client
-```
 
 Then read the [Documentation](https://elizaos.github.io/eliza/) to learn how to customize your Eliza.
-
-### Manually Start Eliza (Only recommended if you know what you are doing)
-
-```bash
-# Clone the repository
-git clone https://github.com/elizaos/eliza.git
-
-# Checkout the latest release
-# This project iterates fast, so we recommend checking out the latest release
-git checkout $(git describe --tags --abbrev=0)
-# If the above doesn't checkout the latest release, this should work:
-# git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
-```
-
-### Start Eliza with Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/elizaos/eliza/tree/main)
-
-### Edit the .env file
-
-Copy .env.example to .env and fill in the appropriate values.
-
-```
-cp .env.example .env
-```
-
-Note: .env is optional. If you're planning to run multiple distinct agents, you can pass secrets through the character JSON
-
-### Automatically Start Eliza
-
-This will run everything to set up the project and start the bot with the default character.
-
-```bash
-sh scripts/start.sh
-```
 
 ### Edit the character file
 
@@ -121,39 +53,120 @@ sh scripts/start.sh
 2. To load custom characters:
     - Use `pnpm start --characters="path/to/your/character.json"`
     - Multiple character files can be loaded simultaneously
-3. Connect with X (Twitter)
-    - change `"clients": []` to `"clients": ["twitter"]` in the character file to connect with X
+  
 
-### Manually Start Eliza
 
-```bash
-pnpm i
-pnpm build
-pnpm start
+### API to use Hyperlane
 
-# The project iterates fast, sometimes you need to clean the project if you are coming back to the project
-pnpm clean
-```
+This project implements an API to interact with messaging smart contracts on Ethereum using Hyperlane.
+It enables sending and receiving messages between different blockchains in a secure and decentralized manner.
 
-#### Additional Requirements
+Contracts
 
-You may need to install Sharp. If you see an error when starting up, try installing it with the following command:
+The project includes two main contracts:
+	1.	Sender: A contract that allows sending messages via Hyperlane.
+	2.	Receiver: A contract that receives and stores messages sent from the Sender.
 
-```
-pnpm install --include=optional sharp
-```
+Requirements
+	•	Python 3.8+
+	•	Node.js (for Ganache)
+	•	Ganache (for local development)
 
-### Community & contact
+Installation
+	1.	Clone the repository:
 
-- [GitHub Issues](https://github.com/elizaos/eliza/issues). Best for: bugs you encounter using Eliza, and feature proposals.
-- [Discord](https://discord.gg/ai16z). Best for: sharing your applications and hanging out with the community.
+git clone [REPOSITORY_URL]
 
-## Contributors
+	2.	Install dependencies:
 
-<a href="https://github.com/elizaos/eliza/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=elizaos/eliza" />
-</a>
+pip install -r requirements.txt
 
-## Star History
+	3.	Install Ganache (for local development):
 
-[![Star History Chart](https://api.star-history.com/svg?repos=elizaos/eliza&type=Date)](https://star-history.com/#elizaos/eliza&Date)
+sudo npm install -g ganache
+
+Configuration
+	1.	Create a .env file in the project root with the following variables:
+
+SENDER=http://localhost:8545  
+RECEIVER=http://localhost:8545  
+PRIVATE_KEY=your_private_key  
+API_HOST=0.0.0.0  
+API_PORT=8000
+
+	2.	Start Ganache:
+
+ganache
+
+Using the API
+
+Deploying Contracts
+	1.	Deploy Sender:
+
+curl -X POST http://localhost:8000/deploy-sender \
+-H "Content-Type: application/json" \
+-d '{
+  "mailbox_address": "0x...",
+  "initial_owner_address": "0x..."
+}'
+
+	2.	Deploy Receiver:
+
+curl -X POST http://localhost:8000/deploy-receiver \
+-H "Content-Type: application/json" \
+-d '{
+  "mailbox_address": "0x...",
+  "initial_owner_address": "0x..."
+}'
+
+Configuring the Receiver
+
+Authorize the Sender contract in the Receiver:
+
+curl -X POST http://localhost:8000/receiver/set-sender \
+-H "Content-Type: application/json" \
+-d '{
+  "address": "0x...",
+  "chain_id": 5
+}'
+
+Sending and Receiving Messages
+	1.	Send Message:
+
+curl -X POST http://localhost:8000/send-message \
+-H "Content-Type: application/json" \
+-d '{
+  "message": "Hello World"
+}'
+
+	2.	Query Messages:
+
+	•	Get a specific message:
+
+curl http://localhost:8000/receiver/message/0
+
+	•	Get the sender of a message:
+
+curl http://localhost:8000/receiver/sender/0
+
+	•	Get all data from a message:
+
+curl http://localhost:8000/receiver/full-message/0
+
+	•	Get the message counter:
+
+curl http://localhost:8000/receiver/counter
+
+
+### Project structure
+├── api.py              # Main API using FastAPI  
+├── requirements.txt    # Python dependencies  
+├── .env                # Environment variables  
+├── Receiver.sol        # Receiver contract  
+├── Sender.sol          # Sender contract  
+├── Receiver.json       # ABI and bytecode for the Receiver  
+├── Sender.json         # ABI and bytecode for the Sender  
+└── README.md           # This file
+
+
+
